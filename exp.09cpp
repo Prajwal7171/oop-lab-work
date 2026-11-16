@@ -1,0 +1,84 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+template <class T>
+class Stack
+{
+    T arr[10];
+    int top;
+
+public:
+    Stack()
+    {
+        top = -1;
+    }
+
+    void push(T x)
+    {
+        if (top == 9)
+        {
+            cout << "Stack Overflow" << endl;
+        }
+        else
+        {
+            arr[++top] = x;
+        }
+    }
+
+    void pop()
+    {
+        if (top == -1)
+        {
+            cout << "Stack Underflow" << endl;
+        }
+        else
+        {
+            cout << "Deleted Element: " << arr[top--] << endl;
+        }
+    }
+
+    void display()
+    {
+        cout << "Stack Elements: ";
+
+        for (int i = top; i >= 0; i--)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout << endl;
+    }
+};
+
+int main()
+{
+    Stack<int> S1;
+
+    S1.push(10);
+    S1.push(20);
+    S1.push(30);
+
+    cout << "Integer Stack:" << endl;
+    S1.display();
+    S1.pop();
+
+    Stack<float> S2;
+
+    S2.push(1.5);
+    S2.push(2.5);
+
+    cout << "\nFloat Stack:" << endl;
+    S2.display();
+
+    Stack<string> S3;
+
+    S3.push("Hello");
+    S3.push("C++");
+
+    cout << "\nString Stack:" << endl;
+    S3.display();
+
+    return 0;
+}
