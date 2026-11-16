@@ -1,0 +1,105 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Person
+{
+protected:
+    string name;
+    int age;
+
+public:
+    void getPersonDetails()
+    {
+        cout << "Enter Name: " << endl;
+        cin >> name;
+
+        cout << "Enter Age: " << endl;
+        cin >> age;
+    }
+
+    void displayPersonData()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+class Student : public Person
+{
+protected:
+    int roll_no;
+    string course;
+
+public:
+    void getStudentDetails()
+    {
+        getPersonDetails();
+
+        cout << "Enter Roll No: " << endl;
+        cin >> roll_no;
+
+        cout << "Enter Course Name: " << endl;
+        cin >> course;
+    }
+
+    void displayStudentData()
+    {
+        displayPersonData();
+
+        cout << "Roll No: " << roll_no << endl;
+        cout << "Course: " << course << endl;
+    }
+};
+
+class GraduateStudent : public Student
+{
+private:
+    string specialization;
+    int marks;
+
+public:
+    void getGraduateStudentDetails()
+    {
+        getStudentDetails();
+
+        cout << "Enter Specialization: " << endl;
+        cin >> specialization;
+
+        cout << "Enter Marks: " << endl;
+        cin >> marks;
+    }
+
+    void displayGraduateStudentData()
+    {
+        displayStudentData();
+
+        cout << "Specialization: "
+             << specialization << endl;
+
+        cout << "Marks: " << marks << endl;
+
+        if (marks >= 45)
+        {
+            cout << "Graduated :)" << endl;
+        }
+        else
+        {
+            cout << "Not Graduate :(" << endl;
+        }
+    }
+};
+
+int main()
+{
+    GraduateStudent s1;
+
+    s1.getGraduateStudentDetails();
+
+    cout << "\n--- DISPLAYING DETAILS ---" << endl;
+
+    s1.displayGraduateStudentData();
+
+    return 0;
+}
